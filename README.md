@@ -1,33 +1,3 @@
----
-tags:
-  - proyectos/charlas
----
-Esta charla trata sobre cómo es posible montar un servidor en una [[Raspberry|raspberry]] 3B.
-
-Forma parte de mis prácticas en la [[OSL]].
-# Descripción:
-¿Alguna vez te has preguntado qué es lo esencial para montar un servidor público? ¿Has intentado crear una web alojada por ti y has fracasado en el intento?
-
-¡Pues no sufras más! En esta charla os llevaremos de la mano para que aprendáis los conceptos básicos:
-
-- Conexión por ssh.
-- Conectar las URLs con vuestras aplicaciones mediante cloudflare (Podremos ver esto por ejemplo con Grafana y Mealie).
-- Lanzado de aplicaciones de supervisión y varios servicios.
-
-Todo esto en una raspberry 3B (1 GB RAM, quad core a 1.2 GHz) y usando Software Libre.
-
-No lo penséis más y apuntaros a esta charla el 28 de Mayo a las 19:30 en el aula 0.7 de la ETSIIT.
-
-https://osl.ugr.es/2024/05/23/home-servers-101/
-# Cartel:
-![[cartelHomeServers.svg]]
-
-
-![[cartelHomeServersInstagram.svg]]
-
-
-![[cartelHomeServersBanner.svg]]
-
 # Instalado de la imagen:
 Lo primer que tenemos que hacer es instalar [[Ubuntu]] server sobre la tarjeta SD de la [[Raspberry|raspberry]].
 
@@ -320,5 +290,3 @@ En este caso en lugar de ejemplo deberíamos poner nuestro dominio.
 [Grafana y Prometheus](http://www.d3noob.org/2020/02/installing-prometheus-and-grafana-on.html)
 [Docker y docker compose](https://www.cherryservers.com/blog/how-to-install-and-use-docker-compose-on-ubuntu-20-04)
 [Mealie](https://docs.mealie.io/documentation/getting-started/installation/installation-checklist/)
-Pedro OSL
-Juanma Vacilón
