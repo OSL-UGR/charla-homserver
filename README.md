@@ -1,20 +1,20 @@
 # Instalado de la imagen:
-Lo primer que tenemos que hacer es instalar [[Ubuntu]] server sobre la tarjeta SD de la [[Raspberry|raspberry]].
+Lo primer que tenemos que hacer es instalar Ubuntu server sobre la tarjeta SD de la raspberry.
 
-Es importante remarcar que la [[Raspberry]] **NO** tiene un [[boot-loader]], esto conlleva que debemos instalar la imagen directamente sobre su memoria interna, en este caso una SD.
+Es importante remarcar que la Raspberry **NO** tiene un boot-loader, esto conlleva que debemos instalar la imagen directamente sobre su memoria interna, en este caso una SD.
 
 Por tanto los pasos son:
 1. Descargamos la última versión de Ubuntu Server (en mi caso es la 22.04).
-2. Nos descargamos [raspberry pi imager](https://raspberryparatorpes.net/instalacion/raspberry-pi-imager-instalador-oficial-de-sistemas-operativos/), la herramienta para montar las imágenes en la tarjeta de las [[Raspberry|raspberries]].
+2. Nos descargamos [raspberry pi imager](https://raspberryparatorpes.net/instalacion/raspberry-pi-imager-instalador-oficial-de-sistemas-operativos/), la herramienta para montar las imágenes en la tarjeta de las raspberries.
 3. Instalamos la imagen de Ubuntu Server sobre nuestra placa con el imager.
 4. Por defecto a mi no me gusta poner ningún valor de usuario y tal, en principio debería venir el usuario "ubuntu" con la contraseña "ubuntu", con permisos de sudo.
 # Primeros pasos:
 Hay que hacer algunas configuraciones iniciales:
-1. [[#Configuración del teclado|Configuración del teclado.]]
-2. [[#Creación del usuario sudoer|Crear el usuario sudoer que usaremos]].
-3. [[#Borrado del usuario por defecto|Borramos el usuario "ubuntu" que se crea por defecto]].
-4. [[#Configuración del ssh|Configuramos el ssh]].
-5. [[#Creación de una partición SWAP|Creamos el SWAP]]
+1. Configuración del teclado.
+2. Crear el usuario sudoer que usaremos.
+3. Borramos el usuario "ubuntu" que se crea por defecto.
+4. Configuramos el ssh.
+5. Creamos el SWAP
 ## Configuración del teclado:
 Por defecto la configuración de teclado que suelen traer las imágenes es la inglesa, por tanto una de las primeras cosas que tenemos que hacer es arreglar esto:
 ```Bash
@@ -28,7 +28,7 @@ Al ejecutar la primera línea vamos a abrir una pantalla que nos permitirá camb
 > El símbolo - en el teclado inglés se corresponde con la ' 
 > en el teclado español.
 
-## Creación del [[Usuario]] sudoer:
+## Creación del Usuario sudoer:
 También hace falta crear el usuario con el que vamos a controlar todo el dispositivo, por tanto es necesario que nuestro usuario tenga permisos de superusuario.
 
 >[!tip] sudo
@@ -49,7 +49,7 @@ Para poder borrar el usuario ubuntu, que es el usuario por defecto, únicamente 
 ```
 
 Con este comando nos aseguramos de que si existía un home asignado a ubuntu, se haya borrado también.
-## Configuración del [[SSH|ssh]]:
+## Configuración del ssh:
 Lo que pretendemos lograr en el ssh es permitir únicamente la conexión mediante clave privada, y no mediante contraseña, ya que es más segura, y también deshabilitar el registro desde el usuario root.
 
 Para ello tenemos que seguir los siguientes pasos:
@@ -73,7 +73,7 @@ Para ello tenemos que seguir los siguientes pasos:
 	ssh {usuario}@{host}
 ```
 4. Configuramos el archivo para no permitir el acceso con contraseña, ni al usuario root, y también cambiaremos el puerto para hacerlo un poquito más seguro.
-## Creación de una [[Partición]] [[SWAP]]:
+## Creación de una Partición SWAP:
 Como la Raspberry tiene muy poca ram, vamos a crearle una partición SWAP, para que pueda aliviar un poco la cantidad de procesos que queremos meter:
 ```shell
 	sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
@@ -110,7 +110,7 @@ Comprobamos que esté funcionando bien y accedemos a la página:
 El puerto por defecto de Prometheus es el 9090, así que accediendo a {Host}:9090 deberíamos ver la página de prometheus.
 
 
-![[Pasted image 20240522135005.png]]
+![](<Pasted image 20240522135005.png>)
 ### Grafana:
 Grafana no viene en los repositorios por defecto, así que vamos a añadir su repositorio a mano:
 ```sh
@@ -133,12 +133,12 @@ Ahora tenemos que actualizar los repositorios, y podemos proceder a instalar Gra
 
 Esperamos unos minutos a que se encienda, y tendremos la página principal en el puerto 3000.
 
-![[Pasted image 20240522140427.png]]
+![](<Pasted image 20240522140427.png>)
 
 Después de esto tenemos que logearnos con "admin" y contraseña "admin", y cambiamos la contraseña por defecto.
 
 Añadimos nuestro prometheus a las fuentes de datos:
-![[Pasted image 20240522140620.png]]
+![](<Pasted image 20240522140620.png>)
 
 Finalmente necesitamos un dashboard, el que recomiendo personalmente es el node exporter full, que es un servicio que suele venir por defecto con prometheus, en caso contrario lo instalamos.
 
@@ -148,7 +148,7 @@ Finalmente necesitamos un dashboard, el que recomiendo personalmente es el node 
 ## Mealie:
 Mealie es una plataforma que sirve para guardar recetas, con ingredientes, instrucciones y ese tipo de cosas.
 
-Mealie tiene un [[Docker|docker]] compose para poder desplegarlo rápidamente, por tanto tenemos que instalar tanto [[Docker|docker]] como [[Docker Compose|docker compose]].
+Mealie tiene un docker compose para poder desplegarlo rápidamente, por tanto tenemos que instalar tanto docker como docker compose.
 ### Instalar docker y docker compose:
 Lo primero que tenemos que hacer es instalar los repositorios de docker, para poder instalar y actualizar docker de manera cómoda. 
 ```sh
@@ -233,8 +233,8 @@ Finalmente hacemos `docker-compose up` y cuando acabe de instalarse tendremos nu
 
 Hemos usado esta manera de hacerlo y no otra como hacerlo desde el repositorio porque haciendo la charla pasaban cosas como:
 
-![[Muestra mealie 1.png]]
-![[Muestra mealie 2.png]]
+![](<Muestra mealie 1.png>)
+![](<Muestra mealie 2.png>)
 # Conexión con internet:
 Para esta
 1. Comprar un dominio.
@@ -246,36 +246,36 @@ Sin embargo aquí vamos a explicar sólo los 3 últimos pasos, ya que los dos pr
 ## Crear el túnel:
 En cloudflare la creación de túneles es muy sencilla, lo veremos con imágenes excepto en las que no hay otra opción:
 1º
-![[Cloudflare1.png]]
+![](<Cloudflare1.png>)
 2º
-![[Cloudflare2.png]]
+![](<Cloudflare2.png>)
 3º
-![[Cloudflare3.png]]
+![](<Cloudflare3.png>)
 4º
-![[Cloudflare4.png]]
+![](<Cloudflare4.png>)
 5º
-![[Cloudflare5.png]]
+![](<Cloudflare5.png>)
 6º
-![[Cloudflare6.png]]
+![](<Cloudflare6.png>)
 7º
-![[Cloudflare7.png]]
+![](<Cloudflare7.png>)
 
 8º Le ponemos un nombre al túnel
-![[Cloudflare8.png]]
+![](<Cloudflare8.png>)
 
 9º En este último paso hay que aclarar que para que funcione el túnel tenemos que instalar el servicio en la raspberry, por tanto le damos a ARM y hacemos click sobre el botón de copiar, después lo pegamos en nuestra máquina y veremos cómo aparece nuestra conexión en la pestaña de connecters.
-![[Cloudflare9.png]]
+![](<Cloudflare9.png>)
 ## Añadir y enrutar servicios:
 Este paso también es muy sencillo, tenemos que decir, respecto al servidor que va a alojar el tunel, dónde está el servicio que queremos exponer, en nuestro caso va a ser localhost pero no hay que olvidar que podemos usar varias máquinas, aumentando exponencialmente el número de servicios que podemos exponer.
-![[Cloudflare10.png]]
+![](<Cloudflare10.png>)
 Además de al momento de la creación podemos hacerlo posteriormente:
-![[Cloudflare11.png]]
+![](<Cloudflare11.png>)
 
-![[Cloudflare12.png]]
+![](<Cloudflare12.png>)
 
-![[Cloudflare13.png]]
+![](<Cloudflare13.png>)
 Vemos que volvemos a la misma página que antes.
-![[Cloudflare14.png]]
+![](<Cloudflare14.png>)
 ## ssh:
 Para configurar el ssh, tenemos que enseñarle a nuestro ordenador a dónde tiene que apuntar cuando queramos llegar a la url, de normal habría que hacerlo a mano, pero cloudflare ofrece un demonio que lo calcula cada vez que quieras unirte, por tanto:
 
@@ -284,7 +284,7 @@ Para configurar el ssh, tenemos que enseñarle a nuestro ordenador a dónde tien
 >(Lo hacemos con nuestro gestor de paquetes normal, no es necesario descargar el binario para compilarlo desde 0)
 
 2. Modificar el archivo .ssh/
-![[CloudflareSSH.png]]
+![](<CloudflareSSH.png>)
 En este caso en lugar de ejemplo deberíamos poner nuestro dominio.
 # Fuentes:
 [Grafana y Prometheus](http://www.d3noob.org/2020/02/installing-prometheus-and-grafana-on.html)
